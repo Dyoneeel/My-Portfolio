@@ -1,4 +1,3 @@
-
 // Initialize AOS animations with complete configuration
 AOS.init({
     duration: 800,
@@ -115,4 +114,34 @@ window.addEventListener("scroll", () => {
     }
 
     lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
+});
+
+// Image Modal Functionality
+document.querySelectorAll('.project-image-clickable').forEach(imgDiv => {
+    imgDiv.addEventListener('click', function() {
+        const imgSrc = imgDiv.getAttribute('data-img');
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('imageModalImg');
+        modalImg.src = imgSrc;
+        modal.classList.add('open');
+    });
+    imgDiv.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            imgDiv.click();
+        }
+    });
+});
+
+document.getElementById('imageModalClose').addEventListener('click', function() {
+    document.getElementById('imageModal').classList.remove('open');
+});
+document.getElementById('imageModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        this.classList.remove('open');
+    }
+});
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        document.getElementById('imageModal').classList.remove('open');
+    }
 });

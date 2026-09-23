@@ -1,11 +1,42 @@
-// Initialize AOS animations with complete configuration
-AOS.init({
-    duration: 800,
-    easing: 'ease-in-out',
-    once: false,
-    offset: 120,
-    mirror: true
-});
+// Restore the visitor's theme before initializing page interactions.
+const themeToggle = document.querySelector('.theme-toggle');
+const savedTheme = localStorage.getItem('portfolio-theme');
+const initialTheme = savedTheme === 'light' ? 'light' : 'dark';
+
+document.documentElement.dataset.theme = initialTheme;
+
+function updateThemeToggle(theme) {
+    if (!themeToggle) return;
+
+    const lightMode = theme === 'light';
+    const nextModeLabel = lightMode ? 'dark mode' : 'light mode';
+    themeToggle.setAttribute('aria-pressed', String(lightMode));
+    themeToggle.setAttribute('aria-label', `Switch to ${nextModeLabel}`);
+    themeToggle.setAttribute('title', `Switch to ${nextModeLabel}`);
+    themeToggle.querySelector('.theme-label').textContent = lightMode ? 'Dark mode' : 'Light mode';
+}
+
+updateThemeToggle(initialTheme);
+
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        const nextTheme = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+        document.documentElement.dataset.theme = nextTheme;
+        localStorage.setItem('portfolio-theme', nextTheme);
+        updateThemeToggle(nextTheme);
+    });
+}
+
+// Initialize AOS once so scroll reveals remain stable and do not replay while scrolling.
+if (typeof AOS !== 'undefined') {
+    AOS.init({
+        duration: 650,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 80,
+        mirror: false
+    });
+}
 
 // Mobile Menu Functionality
 const hamburger = document.getElementById('hamburger');
@@ -85,6 +116,65 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// EmailJS contact form. Replace these values with the IDs from your EmailJS account.
+const emailJsConfig = {
+    publicKey: 'yipLmWU_DtuGyaVDa',
+    serviceId: 'service_6b0t2o8',
+    templateId: 'template_pctgzjb'
+};
+
+const contactForm = document.getElementById('contactForm');
+const formStatus = document.getElementById('formStatus');
+
+if (contactForm && formStatus) {
+    contactForm.addEventListener('submit', async event => {
+        event.preventDefault();
+
+        if (!window.emailjs || Object.values(emailJsConfig).some(value => value.startsWith('YOUR_'))) {
+            formStatus.textContent = 'Email delivery is not configured yet. Please contact me directly by email.';
+            formStatus.className = 'form-status is-error';
+            return;
+        }
+
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending...';
+        formStatus.textContent = '';
+        formStatus.className = 'form-status';
+
+        try {
+            emailjs.init({ publicKey: emailJsConfig.publicKey });
+            await emailjs.sendForm(emailJsConfig.serviceId, emailJsConfig.templateId, contactForm);
+            contactForm.reset();
+            formStatus.textContent = 'Your message was sent successfully.';
+            formStatus.className = 'form-status is-success';
+        } catch (error) {
+            formStatus.textContent = 'Something went wrong. Please try again or email me directly.';
+            formStatus.className = 'form-status is-error';
+        } finally {
+            submitButton.disabled = false;
+            submitButton.textContent = 'Send Message';
+        }
+    });
+}
+
+// Advance the homepage project carousel automatically every three seconds.
+document.querySelectorAll('[data-carousel]').forEach(carousel => {
+    const track = carousel.querySelector('.works-carousel-track');
+    const cards = [...carousel.querySelectorAll('.project-card-carousel')];
+
+    if (!track || cards.length < 2) return;
+
+    let activeCard = 0;
+    window.setInterval(() => {
+        activeCard = (activeCard + 1) % cards.length;
+        track.scrollTo({
+            left: cards[activeCard].offsetLeft,
+            behavior: 'smooth'
+        });
+    }, 3000);
+});
+
 // Icon Button Functionality
 document.querySelectorAll('.icon-button').forEach(button => {
     button.addEventListener('click', function() {
@@ -132,16 +222,29 @@ document.querySelectorAll('.project-image-clickable').forEach(imgDiv => {
     });
 });
 
-document.getElementById('imageModalClose').addEventListener('click', function() {
-    document.getElementById('imageModal').classList.remove('open');
-});
-document.getElementById('imageModal').addEventListener('click', function(e) {
-    if (e.target === this) {
-        this.classList.remove('open');
-    }
-});
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        document.getElementById('imageModal').classList.remove('open');
+const imageModal = document.getElementById('imageModal');
+const imageModalClose = document.getElementById('imageModalClose');
+
+if (imageModal && imageModalClose) {
+    imageModalClose.addEventListener('click', function() {
+        imageModal.classList.remove('open');
+    });
+    imageModal.addEventListener('click', function(e) {
+        if (e.target === this) {
+            this.classList.remove('open');
+        }
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            imageModal.classList.remove('open');
+        }
+    });
+}
+
+// Automatically update copyright year
+document.addEventListener('DOMContentLoaded', () => {
+    const copyrightElem = document.querySelector('.copyright');
+    if (copyrightElem) {
+        copyrightElem.textContent = `© ${new Date().getFullYear()} J1L PORTFOLIO. ALL RIGHTS RESERVED.`;
     }
 });

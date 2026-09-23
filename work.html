@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jonel's Work</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
-    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <link rel="stylesheet" href="portfolio.css">
 </head>
@@ -37,6 +36,10 @@
                 <a href="skill.html" data-aos="fade-down" data-aos-delay="300">Skills</a>
                 <a href="contact.html" data-aos="fade-down" data-aos-delay="400">Contact</a>
             </nav>
+            <button class="theme-toggle" type="button" aria-label="Switch to light mode" title="Switch to light mode" aria-pressed="false">
+                <span class="theme-icon" aria-hidden="true"></span>
+                <span class="theme-label">Light mode</span>
+            </button>
         </div>
     </header>
 
@@ -55,13 +58,40 @@
         <h2 class="section-title" data-aos="fade-up">My Works</h2>
         
         <div class="vertical-projects">
-                        <!-- TourGo Card -->
+            
             <div class="project-card-vertical" data-aos="fade-up" data-aos-delay="300">
-                <div class="project-image-vertical project-image-clickable" 
-                     style="background-image: url('images/tourgo.png')" 
-                     data-img="images/tourgo.png" 
-                     tabindex="0"
-                     aria-label="View full image"></div>
+                <div class="project-image-vertical" 
+                     style="background-image: url('images/rawr-casino.png')"></div>
+                <div class="project-info">
+                    <h3>RAWR CASINO</h3>
+                    <div class="project-meta">
+                        <span class="project-category">Web Application</span>
+                        <span class="project-date">2025</span>
+                    </div>
+                    <p class="project-description">
+                        RAWR casino is a decentralized e-casino platform where users can mine RAWR tokens, exchange it to casino tickets to bet, win, and earn using our custom crypto token.
+                    </p>
+                    <div class="tech-stack">
+                        <span>html</span>
+                        <span>css</span>
+                        <span>js</span>
+                        <span>php</span>
+                        <span>mysql</span>
+                        <span>metamask</span>
+                        <span>ethers.js</span>
+                        <span>hardhat</span>
+                    </div>
+                    <div class="button-group" style="margin-top: 1.5rem;">
+                        <a href="project-template.html">
+                            <button class="action-button">View Project</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card-vertical" data-aos="fade-up" data-aos-delay="400">
+                <div class="project-image-vertical" 
+                     style="background-image: url('images/tourgo.png')"></div>
                 <div class="project-info">
                     <h3>TOURGO</h3>
                     <div class="project-meta">
@@ -78,24 +108,16 @@
                         <span>CSS3</span>
                         <span>JavaScript</span>
                     </div>
-                    <div class="project-features">
-                        <h4>Key Features:</h4>
-                        <ul>
-                            <li>Find and rent cars easily</li>
-                            <li>Customer, agency, and admin dashboards</li>
-                            <li>Booking management and rental history</li>
-                        </ul>
+                    <div class="button-group" style="margin-top: 1.5rem;">
+                        <a href="contact.html"> <button class="action-button">Ask about this project</button>
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <!-- To-Doodle Time Card -->
-            <div class="project-card-vertical" data-aos="fade-up" data-aos-delay="400">
-                <div class="project-image-vertical project-image-clickable" 
-                     style="background-image: url('images/todoodle.png')" 
-                     data-img="images/todoodle.png" 
-                     tabindex="0"
-                     aria-label="View full image"></div>
+            <div class="project-card-vertical" data-aos="fade-up" data-aos-delay="500">
+                <div class="project-image-vertical" 
+                     style="background-image: url('images/todoodle.png')"></div>
                 <div class="project-info">
                     <h3>TO-DOODLE TIME</h3>
                     <div class="project-meta">
@@ -111,24 +133,16 @@
                         <span>CSS3</span>
                         <span>JavaScript</span>
                     </div>
-                    <div class="project-features">
-                        <h4>Key Features:</h4>
-                        <ul>
-                            <li>Add, update, and delete tasks</li>
-                            <li>User-friendly interface</li>
-                            <li>Real-time updates</li>
-                        </ul>
+                    <div class="button-group" style="margin-top: 1.5rem;">
+                        <a href="contact.html"> <button class="action-button">Ask about this project</button>
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Portfolio Website -->
             <div class="project-card-vertical" data-aos="fade-up">
-                              <div class="project-image-vertical project-image-clickable" 
-                     style="background-image: url('images/game.png')" 
-                     data-img="images/game.png" 
-                     tabindex="0"
-                     aria-label="View full image"></div>
+                <div class="project-image-vertical" 
+                     style="background-image: url('images/game.png')"></div>
                 <div class="project-info">
                     <h3>MY PORTFOLIO</h3>
                     <div class="project-meta">
@@ -136,31 +150,23 @@
                         <span class="project-date">2025</span>
                     </div>
                     <p class="project-description">
-                        A modern, responsive portfolio website showcasing technical skills and projects. 
+                        A modern, responsive portfolio website showcasing technical skills and projects.
                     </p>
                     <div class="tech-stack">
                         <span>HTML5</span>
                         <span>CSS3</span>
                         <span>JavaScript</span>
                     </div>
-                    <div class="project-features">
-                        <h4>Key Features:</h4>
-                        <ul>
-                            <li>Responsive Design</li>
-                            <li>Scroll Animations</li>
-                            <li>Interactive Elements</li>
-                        </ul>
+                    <div class="button-group" style="margin-top: 1.5rem;">
+                        <a href="contact.html"> <button class="action-button">Ask about this project</button>
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Game Grounds Web App -->
             <div class="project-card-vertical" data-aos="fade-up" data-aos-delay="100">
-                              <div class="project-image-vertical project-image-clickable" 
-                     style="background-image: url('images/project.jpg')" 
-                     data-img="images/project.jpg" 
-                     tabindex="0"
-                     aria-label="View full image"></div>
+                <div class="project-image-vertical" 
+                     style="background-image: url('images/project.jpg')"></div>
                 <div class="project-info">
                     <h3>GAME GROUNDS</h3>
                     <div class="project-meta">
@@ -176,25 +182,16 @@
                         <span>JavaScript</span>
                         <span>HTML5</span>
                     </div>
-                    <div class="project-features">
-                        <h4>Key Features:</h4>
-                        <ul>
-                            <li>User Authentication</li>
-                            <li>Responsive Design</li>
-                            <li>Database Integration</li>
-                            <li>Interactive UI</li>
-                        </ul>
+                    <div class="button-group" style="margin-top: 1.5rem;">
+                        <a href="contact.html"> <button class="action-button">Ask about this project</button>
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Escape Flutter App -->
             <div class="project-card-vertical" data-aos="fade-up" data-aos-delay="200">
-                              <div class="project-image-vertical project-image-clickable" 
-                     style="background-image: url('images/project4.jpg')" 
-                     data-img="images/project4.jpg" 
-                     tabindex="0"
-                     aria-label="View full image"></div>
+                <div class="project-image-vertical" 
+                     style="background-image: url('images/project4.jpg')"></div>
                 <div class="project-info">
                     <h3>ESCAPE</h3>
                     <div class="project-meta">
@@ -207,15 +204,13 @@
                     <div class="tech-stack">
                         <span>Flutter</span>
                     </div>
-                    <div class="project-features">
-                        <h4>Key Features:</h4>
-                        <ul>
-                            <li>Offline Mode</li>
-                            <li>Multiplayer</li>
-                        </ul>
+                    <div class="button-group" style="margin-top: 1.5rem;">
+                        <a href="contact.html"> <button class="action-button">Ask about this project</button>
+                        </a>
                     </div>
                 </div>
             </div>
+            
         </div>
     </div>
 </section>
@@ -223,20 +218,14 @@
 <section id="contact" class="section dark-section">
     <div class="container">
         <h2 class="section-title" data-aos="fade-up">LET'S CONNECT</h2>
-        <p class="section-text" data-aos="fade-up">Wanna hire me?</p>
+            <p class="section-text" data-aos="fade-up">Have a product, system, or idea that needs a thoughtful technical partner?</p>
         <div class="button-group" data-aos="fade-up">
             <a href="contact.html">
-            <button class="action-button">
-                Contact Me
-            </button>
-        </a>
+                <button class="action-button">Contact Me</button>
+            </a>
             <a href="contact.html">
-            <button class="icon-button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z"/>
-                </svg>
-            </button>
-        </a>
+                <button class="action-button">Request my CV</button>
+            </a>
         </div>
     </div>
 </section>
@@ -259,14 +248,8 @@
                 </svg>
             </a>
         </div>
-        <p class="copyright">© 2025 J1L PORTFOLIO. ALL RIGHTS RESERVED.</p>
+        <p class="copyright"></p>
     </footer>
-
-    <!-- Image Modal -->
-<div id="imageModal" class="image-modal">
-  <span class="image-modal-close" id="imageModalClose">&times;</span>
-  <img class="image-modal-content" id="imageModalImg" alt="Project Full Image">
-</div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="portfolio.js"></script>
